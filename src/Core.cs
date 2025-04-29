@@ -7,8 +7,8 @@ using System.Drawing;
 
 public class Camera
 {
-    public Vec3 Position;  // Просто поле, без readonly
-    public Vec3 Rotation;  // Просто поле, без readonly
+    public Vec3 Position;  
+    public Vec3 Rotation;  
     public int FOV { get; set; }
     public float NearClip { get; set; } = 0.1f;
     public float FarClip { get; set; } = 100.0f;
@@ -22,10 +22,10 @@ public class Camera
 
     public Vec3 WorldToViewSpace(Vec3 point)
     {
-        // 1. Переводим точку в пространство камеры (учитываем позицию камеры)
+     
         Vec3 translated = point - Position;
 
-        // 2. Применяем вращение камеры (обратное вращение)
+  
         translated = translated.Rotate('x', -Rotation.X)
                               .Rotate('y', -Rotation.Y)
                               .Rotate('z', -Rotation.Z);
@@ -47,7 +47,7 @@ public static class Core
         float xProj = pointInViewSpace.X / (pointInViewSpace.Z * tanHalfFov);
         float yProj = pointInViewSpace.Y / (pointInViewSpace.Z * tanHalfFov);
 
-        // Клиппинг по границам экрана
+
         if (Math.Abs(xProj) > 2.0f || Math.Abs(yProj) > 2.0f)
             return null;
 
@@ -59,8 +59,7 @@ public static class Core
 
     public static Vec3 Rotate(this Vec3 vector3, char axis, float angle)
     {
-        // Rotation of 3D Vector3 around a given axis.
-        // Using: Rotate(Vector3[x,y,z], 'x' or 'y' or 'z', angle)
+
 
         float cosAngle = MathF.Cos(angle);
         float sinAngle = MathF.Sin(angle);
@@ -127,8 +126,7 @@ public static class Core
 
     public static Vec2 ScreenSpaceToSDLCoords(Vec2 vector2, int screenWidth, int screenHeight)
     {
-        // Screen Space to Game Coordinates
-        // Like [-1,1] to [600,400]
+      
 
         return new Vec2(
             (int)(vector2.X * screenWidth),
@@ -138,8 +136,7 @@ public static class Core
 
     public static Vec3 Translate3D(Vec3 vector3, Vec3 cortVec3)
     {
-        // Translate the 3D vector3 around the cartesian origin
-        // Note: This is a simplified version that just adds the vectors
+
         return new Vec3(
             vector3.X + cortVec3.X,
             vector3.Y + cortVec3.Y,
