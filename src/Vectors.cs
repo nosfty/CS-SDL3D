@@ -2,7 +2,7 @@
     using System;
     using System.Collections.Generic;
 
-    // Two-dimensional vector class
+
     public sealed class Vec2
     {
 
