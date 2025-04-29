@@ -29,7 +29,7 @@ class Program
                 new Vec3(-0.5f, 0.5f, 0.5f)
             };
 
-            // Ребра куба
+         
             List<(int, int)> edges = new List<(int, int)>
             {
                 (0,1), (1,2), (2,3), (3,0),
@@ -44,7 +44,7 @@ class Program
                     if (e.type == SDL.SDL_EventType.SDL_QUIT)
                         running = false;
 
-                    // Управление камерой
+               
                     if (e.type == SDL.SDL_EventType.SDL_KEYDOWN)
                     {
                         float moveSpeed = 0.1f;
@@ -78,22 +78,22 @@ class Program
 
                 foreach (var edge in edges)
                 {
-                    // Поворачиваем точки в мировом пространстве
+              
                     Vec3 worldA = cubeVertices[edge.Item1].Rotate('x', angle).Rotate('y', angle * 0.7f);
                     Vec3 worldB = cubeVertices[edge.Item2].Rotate('x', angle).Rotate('y', angle * 0.7f);
 
-                    // Переводим в пространство камеры
+             
                     Vec3 viewA = camera.WorldToViewSpace(worldA);
                     Vec3 viewB = camera.WorldToViewSpace(worldB);
 
-                    // Проекция на 2D
+      
                     Vec2 screenA = Core.Vec3toVec2(viewA, camera);
                     Vec2 screenB = Core.Vec3toVec2(viewB, camera);
 
                     if (screenA == null || screenB == null)
                         continue;
 
-                    // Преобразование в экранные координаты
+           
                     Vec2 sdlA = Core.ScreenSpaceToSDLCoords(screenA, ScreenWidth, ScreenHeight);
                     Vec2 sdlB = Core.ScreenSpaceToSDLCoords(screenB, ScreenWidth, ScreenHeight);
 
