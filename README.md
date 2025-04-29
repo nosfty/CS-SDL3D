@@ -74,7 +74,7 @@ All contributions are welcome! Here are some ideas:
 4. Push to your fork (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
-###Gallery
+### Gallery
 
 ![image](https://github.com/user-attachments/assets/b8b276bb-c406-4557-ab44-5554ff99bd11)
 
