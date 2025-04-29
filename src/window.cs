@@ -1,7 +1,7 @@
 ﻿using System;
 using SDL2;
 
-// Менеджер окна и рендеринга
+
 public class WindowManager : IDisposable
 {
     private readonly IntPtr _window;
@@ -42,7 +42,7 @@ public class WindowManager : IDisposable
 
     public void ClearBackground()
     {
-        SDL.SDL_SetRenderDrawColor(_renderer, 0, 0, 0, 255); // Черный фон
+        SDL.SDL_SetRenderDrawColor(_renderer, 0, 0, 0, 255); 
         SDL.SDL_RenderClear(_renderer);
     }
 
