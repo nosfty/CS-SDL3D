@@ -13,6 +13,9 @@ class Program
             SDL.SDL_Event e;
             float angle = 0.0f;
 
+
+            .gsdf
+
             // Создаем камеру
             Camera camera = new Camera(new Vec3(0, 0, -2), 45);
 
