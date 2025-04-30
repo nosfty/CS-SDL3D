@@ -11,7 +11,7 @@ public class WindowManager : IDisposable
     {
         if (SDL.SDL_Init(SDL.SDL_INIT_VIDEO) != 0)
         {
-            throw new Exception($"Ошибка инициализации SDL: {SDL.SDL_GetError()}");
+            throw new Exception($"INIT FAIL {SDL.SDL_GetError()}");
         }
 
         _window = SDL.SDL_CreateWindow(
@@ -24,14 +24,14 @@ public class WindowManager : IDisposable
 
         if (_window == IntPtr.Zero)
         {
-            throw new Exception($"Ошибка создания окна: {SDL.SDL_GetError()}");
+            throw new Exception($"WINDOW CREATE FAIL: {SDL.SDL_GetError()}");
         }
 
         _renderer = SDL.SDL_CreateRenderer(_window, -1, SDL.SDL_RendererFlags.SDL_RENDERER_ACCELERATED | SDL.SDL_RendererFlags.SDL_RENDERER_PRESENTVSYNC);
 
         if (_renderer == IntPtr.Zero)
         {
-            throw new Exception($"Ошибка создания рендерера: {SDL.SDL_GetError()}");
+            throw new Exception($"RENDERER CREATE FAIL {SDL.SDL_GetError()}");
         }
     }
 
